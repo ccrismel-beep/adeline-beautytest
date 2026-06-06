@@ -248,7 +248,8 @@ HTML = f"""<!DOCTYPE html>
     <div class="card"><div class="emoji">🌸</div><h3>Parfums</h3><p>Tests olfactifs et tenue sur peau</p></div>
     <div class="card"><div class="emoji">💆</div><h3>Soins cheveux</h3><p>Masques, huiles, shampooings, serums</p></div>
     <div class="card"><div class="emoji">🛁</div><h3>Corps & bain</h3><p>Hydratants, exfoliants, huiles de soin</p></div>
-    <div class="card"><div class="emoji">🌿</div><h3>Bien-etre</h3><p>Complements, accessoires beaute, lifestyle</p></div>
+    <div class="card"><div class="emoji">🌿</div><h3>Bien-etre</h3><p>Complements, Complemenaccessoires beaute, lifestyle</p></div>     <div class="card"><div class="emoji">&#128248;</div><h3>Mode &amp; Videos</h3><p>Tenues, looks, essayages et videos mode</p></div>ts, accessoires, lifestyle</p></div>
+    <div class=\"card\"><div class=\"emoji\">&#128248;</div><h3>Mode &amp; Videos</h3><p>Tenues, looks, essayages et videos mode</p></div>
   </div>
 </section>
 
