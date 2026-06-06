@@ -1,0 +1,332 @@
+#!/usr/bin/env python3
+import datetime
+from pathlib import Path
+
+# ---------- CONFIG DE BASE ----------
+SITE_URL = "https://ccrismel-beep.github.io/adeline-beautytest/"
+INSTAGRAM_URL = "https://www.instagram.com/adeline_beautytest/"
+DOMAIN_URL = "https://www.adelinebeautytest.fr"
+EMAIL = "contact@adelinebeautytest.fr"
+LAST_MOD = datetime.date.today().isoformat()
+OUT_DIR = Path(".")
+
+# ---------- CONTENU HTML ----------
+HTML = f"""<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Adeline Beauty Test | Testeuse beaute & lifestyle | Avis honnetes</title>
+  <meta name="description" content="Adeline teste pour vous les soins, maquillage, parfums et tendances beaute. Avis independants, tests reels sur 4 a 8 semaines. Suivez @adeline_beautytest sur Instagram.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Adeline Beauty Test – Testeuse beaute independante">
+  <meta property="og:description" content="Tests beaute independants : soins visage, maquillage, parfums, cheveux. Avis honnetes par Adeline.">
+  <meta property="og:url" content="{SITE_URL}">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {{
+    "@context": "https://schema.org",
+    "@graph": [
+      {{
+        "@type": "Person",
+        "@id": "{SITE_URL}#adeline",
+        "name": "Adeline",
+        "description": "Testeuse beaute independante, creatr ice de contenu beaute et lifestyle sur Instagram @adeline_beautytest",
+        "url": "{SITE_URL}",
+        "sameAs": ["{INSTAGRAM_URL}"]
+      }},
+      {{
+        "@type": "WebSite",
+        "@id": "{SITE_URL}#website",
+        "name": "Adeline Beauty Test",
+        "url": "{SITE_URL}",
+        "inLanguage": "fr-FR"
+      }},
+      {{
+        "@type": "FAQPage",
+        "@id": "{SITE_URL}#faq",
+        "mainEntity": [
+          {{
+            "@type": "Question",
+            "name": "Qui est Adeline beautytest ?",
+            "acceptedAnswer": {{
+              "@type": "Answer",
+              "text": "Adeline est une testeuse beaute independante, connue sur Instagram sous le compte @adeline_beautytest. Elle teste soins, maquillage, parfums et produits lifestyle de facon honnete et transparente."
+            }}
+          }},
+          {{
+            "@type": "Question",
+            "name": "Adeline fait-elle des tests remuneres ?",
+            "acceptedAnswer": {{
+              "@type": "Answer",
+              "text": "Adeline accepte des partenariats avec des marques beaute, mais ses avis restent toujours honnetes et independants. Les collaborations sont clairement mentionnees dans ses contenus."
+            }}
+          }},
+          {{
+            "@type": "Question",
+            "name": "Comment contacter Adeline pour un partenariat ?",
+            "acceptedAnswer": {{
+              "@type": "Answer",
+              "text": "Pour toute demande de collaboration ou partenariat beaute, contactez Adeline par email a {EMAIL} ou via son profil Instagram @adeline_beautytest."
+            }}
+          }},
+          {{
+            "@type": "Question",
+            "name": "Quels types de produits beaute Adeline teste-t-elle ?",
+            "acceptedAnswer": {{
+              "@type": "Answer",
+              "text": "Adeline teste principalement les soins visage, le maquillage, les parfums, les soins cheveux et les produits lifestyle. Ses tests durent en general de 4 a 8 semaines pour un avis fiable."
+            }}
+          }}
+        ]
+      }}
+    ]
+  }}
+  </script>
+  <style>
+    :root {{
+      --rose: #F9A8D4;
+      --nude: #FDF2E9;
+      --rose-fonce: #EC4899;
+      --texte: #3D2B1F;
+      --gris: #6B7280;
+    }}
+    * {{ box-sizing: border-box; margin: 0; padding: 0; }}
+    body {{
+      font-family: 'Lato', sans-serif;
+      background: #FFFBF7;
+      color: var(--texte);
+      line-height: 1.7;
+    }}
+    /* HERO */
+    .hero {{
+      background: linear-gradient(135deg, #FFF0F6 0%, #FDF2E9 100%);
+      text-align: center;
+      padding: 60px 20px 50px;
+      border-bottom: 3px solid var(--rose);
+    }}
+    .hero h1 {{
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
+      color: var(--texte);
+      margin-bottom: 12px;
+    }}
+    .hero h1 span {{ color: var(--rose-fonce); }}
+    .hero p {{
+      font-size: 1.1rem;
+      color: var(--gris);
+      max-width: 600px;
+      margin: 0 auto 28px;
+    }}
+    .btn {{
+      display: inline-block;
+      background: var(--rose-fonce);
+      color: #fff;
+      padding: 14px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      margin: 6px;
+      transition: background 0.2s;
+    }}
+    .btn:hover {{ background: #BE185D; }}
+    .btn-outline {{
+      background: transparent;
+      border: 2px solid var(--rose-fonce);
+      color: var(--rose-fonce);
+    }}
+    .btn-outline:hover {{ background: var(--rose-fonce); color: #fff; }}
+    /* SECTIONS */
+    section {{ padding: 50px 20px; max-width: 900px; margin: 0 auto; }}
+    h2 {{
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--texte);
+      margin-bottom: 24px;
+      text-align: center;
+    }}
+    h2::after {{
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: var(--rose);
+      margin: 10px auto 0;
+      border-radius: 2px;
+    }}
+    /* GRILLE CATEGORIES */
+    .grid {{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }}
+    .card {{
+      background: #fff;
+      border-radius: 16px;
+      padding: 28px 20px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(249,168,212,0.18);
+      border-top: 4px solid var(--rose);
+      transition: transform 0.2s;
+    }}
+    .card:hover {{ transform: translateY(-5px); }}
+    .card .emoji {{ font-size: 2.4rem; margin-bottom: 10px; }}
+    .card h3 {{ font-size: 1rem; font-weight: 700; color: var(--texte); margin-bottom: 6px; }}
+    .card p {{ font-size: 0.88rem; color: var(--gris); }}
+    /* CONFIANCE */
+    .trust-section {{ background: #FFF0F6; border-radius: 20px; padding: 40px 30px; }}
+    .trust-items {{ display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin-top: 24px; }}
+    .trust-item {{
+      background: #fff;
+      border-radius: 12px;
+      padding: 16px 22px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      box-shadow: 0 2px 12px rgba(236,72,153,0.08);
+    }}
+    .trust-item .check {{ color: var(--rose-fonce); font-size: 1.2rem; }}
+    /* FAQ */
+    .faq-item {{ border-bottom: 1px solid #F3D5E8; padding: 18px 0; }}
+    .faq-item h3 {{ font-size: 1rem; font-weight: 700; color: var(--texte); margin-bottom: 8px; }}
+    .faq-item p {{ font-size: 0.95rem; color: var(--gris); }}
+    /* CONTACT */
+    .contact-box {{
+      background: linear-gradient(135deg, #FFF0F6, #FDF2E9);
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      border: 2px solid var(--rose);
+    }}
+    .contact-box p {{ font-size: 1.05rem; color: var(--gris); margin-bottom: 20px; }}
+    .contact-box a.email-link {{
+      display: inline-block;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--rose-fonce);
+      text-decoration: none;
+      margin-bottom: 20px;
+    }}
+    /* FOOTER */
+    footer {{
+      background: var(--texte);
+      color: #F9A8D4;
+      text-align: center;
+      padding: 24px 20px;
+      font-size: 0.88rem;
+    }}
+    footer a {{ color: var(--rose); text-decoration: none; }}
+    /* RESPONSIVE */
+    @media (max-width: 600px) {{
+      .hero h1 {{ font-size: 1.8rem; }}
+      h2 {{ font-size: 1.5rem; }}
+    }}
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>Adeline <span>Beauty Test</span></h1>
+  <p>Testeuse beaute independante. Je teste les soins, maquillage, parfums et tendances pour vous donner un avis honnete.</p>
+  <a class="btn" href="{INSTAGRAM_URL}" target="_blank" rel="noopener">Suivre sur Instagram</a>
+  <a class="btn btn-outline" href="mailto:{EMAIL}">Me contacter</a>
+</div>
+
+<!-- CATEGORIES -->
+<section>
+  <h2>Mes categories beaute</h2>
+  <div class="grid">
+    <div class="card"><div class="emoji">✨</div><h3>Soins visage</h3><p>Serums, cre mes, masques, contours des yeux</p></div>
+    <div class="card"><div class="emoji">💄</div><h3>Maquillage</h3><p>Fonds de teint, rouges a le vres, palettes</p></div>
+    <div class="card"><div class="emoji">🌸</div><h3>Parfums</h3><p>Tests olfactifs et tenue sur peau</p></div>
+    <div class="card"><div class="emoji">💆</div><h3>Soins cheveux</h3><p>Masques, huiles, shampooings, serums</p></div>
+    <div class="card"><div class="emoji">🛁</div><h3>Corps & bain</h3><p>Hydratants, exfoliants, huiles de soin</p></div>
+    <div class="card"><div class="emoji">🌿</div><h3>Bien-etre</h3><p>Complements, accessoires beaute, lifestyle</p></div>
+  </div>
+</section>
+
+<!-- CONFIANCE -->
+<section>
+  <div class="trust-section">
+    <h2>Pourquoi me faire confiance ?</h2>
+    <div class="trust-items">
+      <div class="trust-item"><span class="check">✓</span> Testeuse independante - aucun avis cache</div>
+      <div class="trust-item"><span class="check">✓</span> Tests sur 4 a 8 semaines</div>
+      <div class="trust-item"><span class="check">✓</span> Peau mixte a grasse - profil representatif</div>
+      <div class="trust-item"><span class="check">✓</span> Partenariats toujours annonces</div>
+      <div class="trust-item"><span class="check">✓</span> Compte Instagram actif @adeline_beautytest</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <h2>Questions frequentes</h2>
+  <div class="faq-item">
+    <h3>Qui est Adeline beautytest ?</h3>
+    <p>Adeline est une testeuse beaute independante, connue sur Instagram sous le compte @adeline_beautytest. Elle partage des avis honnetes sur les soins, maquillage, parfums et lifestyle.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Adeline fait-elle des tests remuneres ?</h3>
+    <p>Adeline peut accepter des partenariats avec des marques, mais ses avis restent toujours honnetes. Toute collaboration est clairement mentionnee dans ses contenus.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Comment contacter Adeline pour un partenariat ?</h3>
+    <p>Via son email <a href="mailto:{EMAIL}">{EMAIL}</a> ou via son profil Instagram <a href="{INSTAGRAM_URL}" target="_blank" rel="noopener">@adeline_beautytest</a>.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Quels types de produits teste-t-elle ?</h3>
+    <p>Soins visage, maquillage, parfums, soins cheveux, corps et bien-etre. Les tests durent generalement de 4 a 8 semaines pour un avis fiable.</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section>
+  <div class="contact-box">
+    <h2>Collaborations & Contact</h2>
+    <p>Vous etes une marque beaute et souhaitez qu'Adeline teste votre produit ? Contactez-la !</p>
+    <a class="email-link" href="mailto:{EMAIL}">{EMAIL}</a><br>
+    <a class="btn" href="{INSTAGRAM_URL}" target="_blank" rel="noopener">@adeline_beautytest</a>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; {LAST_MOD[:4]} Adeline Beauty Test &mdash; <a href="{INSTAGRAM_URL}" target="_blank" rel="noopener">@adeline_beautytest</a> &mdash; <a href="{SITE_URL}sitemap.xml">Sitemap</a></p>
+  <p style="margin-top:6px;font-size:0.8rem;color:#9CA3AF;">Derniere mise a jour : {LAST_MOD}</p>
+</footer>
+
+</body>
+</html>"""
+
+# ---------- ROBOTS.TXT ----------
+ROBOTS = f"""User-agent: *
+Allow: /
+Sitemap: {SITE_URL}sitemap.xml
+"""
+
+# ---------- SITEMAP.XML ----------
+SITEMAP = f"""<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>{SITE_URL}</loc>
+    <lastmod>{LAST_MOD}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+</urlset>"""
+
+def main():
+    (OUT_DIR / "index.html").write_text(HTML, encoding="utf-8")
+    (OUT_DIR / "robots.txt").write_text(ROBOTS, encoding="utf-8")
+    (OUT_DIR / "sitemap.xml").write_text(SITEMAP, encoding="utf-8")
+    print(f"[OK] Fichiers generes le {LAST_MOD}")
+
+if __name__ == "__main__":
+    main()
